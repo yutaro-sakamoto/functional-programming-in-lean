@@ -1,0 +1,10 @@
+name = "functional-programming-in-lean"
+version = "0.1.0"
+defaultTargets = ["functional-programming-in-lean"]
+
+[[lean_lib]]
+name = "FunctionalProgrammingInLean"
+
+[[lean_exe]]
+name = "functional-programming-in-lean"
+root = "Main"
