@@ -3,6 +3,7 @@ def hello := "world"
 class HPlus (α : Type) (β : Type) (γ : Type) where
     hPlus : α → β → γ
 
+@[default_instance]
 instance [Add α] : HPlus α α α where
     hPlus := Add.add
 
