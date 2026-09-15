@@ -44,3 +44,21 @@ def NonEmptyList.get (xs : NonEmptyList α)
   match i with
   | 0 => xs.head
   | n + 1 => xs.tail[n]
+
+--class GetElem
+--  (coll : Type)
+--  (idx : Type)
+--  (item : outParam Type)
+--  (inBounds : outParam (coll → idx → Prop)) where
+--  getElem : (c : coll) → (i : idx) → inBounds c i → item
+
+instance : GetElem (NonEmptyList α) Nat α NonEmptyList.inBounds where
+  getElem := NonEmptyList.get
+
+structure PPoint (α : Type) : Type where
+  x : α
+  y : α
+
+instance : GetElem (PPoint α) Bool α (fun _ _ => True) where
+  getElem (p : PPoint α) (i : Bool) _ :=
+    if not i then p.x else p.y
