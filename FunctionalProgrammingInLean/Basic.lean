@@ -64,8 +64,17 @@ instance : GetElem (PPoint α) Bool α (fun _ _ => True) where
     if not i then p.x else p.y
 
 structure Pos : Type where
-  x : ℤ
-  y : ℤ
+  x : Nat
+  y : Nat
 
-instance LT Pos where
-  lt x y := LT.lt x.toNat y.toNat
+instance : LT Pos where
+  lt p1 p2 := LT.lt p1.x p2.x
+
+instance : LE Pos where
+  le p1 p2 := LE.le p1.x p2.x
+
+instance {p1 : Pos} {p2 : Pos} : Decidable (p1 < p2) :=
+  (inferInstance : Decidable (p1.x < p2.x))
+
+instance {p1 : Pos} {p2 : Pos} : Decidable (p1 ≤ p2) :=
+  (inferInstance : Decidable (p1.x ≤ p2.x))
