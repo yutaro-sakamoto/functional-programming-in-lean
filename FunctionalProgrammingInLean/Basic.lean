@@ -62,3 +62,7 @@ structure PPoint (α : Type) : Type where
 instance : GetElem (PPoint α) Bool α (fun _ _ => True) where
   getElem (p : PPoint α) (i : Bool) _ :=
     if not i then p.x else p.y
+
+structure Pos (α : Type) : Type where
+  x : α
+  y : α
