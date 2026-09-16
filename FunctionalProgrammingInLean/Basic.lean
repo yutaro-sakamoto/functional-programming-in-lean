@@ -63,6 +63,9 @@ instance : GetElem (PPoint α) Bool α (fun _ _ => True) where
   getElem (p : PPoint α) (i : Bool) _ :=
     if not i then p.x else p.y
 
-structure Pos (α : Type) : Type where
-  x : α
-  y : α
+structure Pos : Type where
+  x : ℤ
+  y : ℤ
+
+instance LT Pos where
+  lt x y := LT.lt x.toNat y.toNat
