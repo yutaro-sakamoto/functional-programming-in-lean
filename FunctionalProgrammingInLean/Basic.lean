@@ -78,3 +78,6 @@ instance {p1 : Pos} {p2 : Pos} : Decidable (p1 < p2) :=
 
 instance {p1 : Pos} {p2 : Pos} : Decidable (p1 ≤ p2) :=
   (inferInstance : Decidable (p1.x ≤ p2.x))
+
+instance [Hashable α] : Hashable (NonEmptyList α) where
+  hash xs := mixHash (hash xs.head) (hash xs.tail)
