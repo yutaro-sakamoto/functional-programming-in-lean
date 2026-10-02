@@ -81,3 +81,7 @@ instance {p1 : Pos} {p2 : Pos} : Decidable (p1 ≤ p2) :=
 
 instance [Hashable α] : Hashable (NonEmptyList α) where
   hash xs := mixHash (hash xs.head) (hash xs.tail)
+
+inductive BinTree (α : Type) where
+  | leaf : BinTree α
+  | branch : BinTree α → α → BinTree α → BinTree α
