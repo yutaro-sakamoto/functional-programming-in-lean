@@ -91,3 +91,11 @@ def eqBinTree [BEq α] : BinTree α → BinTree α → Bool
   | BinTree.branch l x r, BinTree.branch l2 x2 r2 =>
     x == x2 && eqBinTree l l2 && eqBinTree r r2
   | _, _ => false
+
+def hashBinTree [Hashable α] : BinTree α → UInt64
+  | BinTree.leaf => 0
+  | BinTree.branch left x right =>
+    mixHash 1 $
+      mixHash (hashBinTree left) $
+        mixHash (hash x) $
+          hashBinTree right
