@@ -99,3 +99,6 @@ def hashBinTree [Hashable α] : BinTree α → UInt64
       mixHash (hashBinTree left) $
         mixHash (hash x) $
           hashBinTree right
+
+instance [Hashable α] : Hashable (BinTree α) where
+  hash := hashBinTree
