@@ -102,3 +102,10 @@ def hashBinTree [Hashable α] : BinTree α → UInt64
 
 instance [Hashable α] : Hashable (BinTree α) where
   hash := hashBinTree
+
+--class HAppend (α : Type) (β : Type) (γ : outParam Type) where
+--  hAppend : α → β → γ
+
+instance : Append (NonEmptyList α) where
+  append xs ys :=
+    { head := xs.head, tail := xs.tail ++ ys.head :: ys.tail}
