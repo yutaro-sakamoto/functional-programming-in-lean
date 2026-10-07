@@ -109,3 +109,11 @@ instance [Hashable α] : Hashable (BinTree α) where
 instance : Append (NonEmptyList α) where
   append xs ys :=
     { head := xs.head, tail := xs.tail ++ ys.head :: ys.tail}
+
+#eval idahoSpiders ++ idahoSpiders
+
+instance : HAppend (NonEmptyList α) (List α) (NonEmptyList α) where
+  hAppend xs ys :=
+    { head := xs.head, tail := xs.tail ++ ys }
+
+#eval idahoSpiders ++ ["Trapdoor Spider"]
