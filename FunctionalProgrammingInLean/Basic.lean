@@ -117,3 +117,6 @@ instance : HAppend (NonEmptyList α) (List α) (NonEmptyList α) where
     { head := xs.head, tail := xs.tail ++ ys }
 
 #eval idahoSpiders ++ ["Trapdoor Spider"]
+
+instance : Functor NonEmptyList where
+  map f xs := { head := f xs.head, tail := f <$> xs.tail }
