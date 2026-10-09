@@ -120,3 +120,6 @@ instance : HAppend (NonEmptyList α) (List α) (NonEmptyList α) where
 
 instance : Functor NonEmptyList where
   map f xs := { head := f xs.head, tail := f <$> xs.tail }
+
+instance : Functor PPoint where
+  map f p := { x := f p.x, y := f p.y }
